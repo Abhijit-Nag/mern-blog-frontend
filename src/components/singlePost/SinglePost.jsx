@@ -39,7 +39,7 @@ export default function SinglePost() {
             console.log(err);
         }
     };
-    const PF = "http://localhost:5000/images/";
+    const PF = "https://mern-blog-app-api-q9a6.onrender.com/images/";
     const handleDelete = async () => {
         try {
             // without this "{data}" in below post was not deleting it was coming an error don't know why;
