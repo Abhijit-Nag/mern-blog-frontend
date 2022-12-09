@@ -3,7 +3,7 @@ import "./post.css"
 import { Link } from "react-router-dom"
 
 export default function Post({ post }) {
-    const PF= "http://localhost:5000/images/";
+    const PF= "https://mern-blog-app-api-q9a6.onrender.com/images/";
     return (
         <Link className='link' to={`/post/${post._id}`} >
             {/* "https://wallpapercave.com/wp/wp2127342.jpg" */}
