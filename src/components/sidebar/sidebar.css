@@ -1,0 +1,213 @@
+.sidebar{
+    flex: 3;
+    margin: 20px;
+    padding-bottom: 30px;
+    background-color: #fbfbfb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+}
+
+.sidebarImg{
+    width: 72%;
+    height: 250px;
+    border-radius: 12px;
+}
+
+.sidebarItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebarTitle{
+    margin: 25px;
+    padding: 15px;
+    width: 60%;
+    border-top: 1px solid #a7a4a4;
+    border-bottom: 1px solid #a7a4a4;
+    text-align: center;
+    
+    font-family: 'Kalam', cursive;
+    font-size: 15px;
+}
+
+.sidebarTitle::first-letter{
+    font-size: 30px;
+}
+.sidebarItem > img{
+    margin-top: 15px;
+}
+
+.sidebarItem >  p{
+    padding: 30px;
+    line-height: 26px;
+    /* font-size: 50px; */
+}
+
+.sidebarItem > p::first-letter{
+    font-size: 36px;
+    font-family: kenia, cursive;
+}
+.sidebarList{
+    list-style:none;
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-right: 25px;
+    background-color: #a7a4a4;
+    justify-content: flex-start;
+}
+.sidebarListItem{
+    /* display: inline-block; */
+    width: 50%;
+    font-size: 15px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.sidebarListItem::first-letter{
+    font-size: 25px;
+}
+
+.sidebarListItem:hover{
+    /* font-size: 16px; */
+    color: white;
+}
+
+.sidebarSocial{
+    margin-top: 15px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebarIcon{
+    font-size: 16px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+@media (max-width:768px){
+    .sidebar{
+        /* flex: 3; */
+        width: 100vw;
+        margin: 20px 0;
+        padding-bottom: 30px;
+        background-color: #fbfbfb;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        -webkit-box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+    box-shadow: -11px 11px 18px 0px rgba(0,0,0,0.75);
+    position: relative;
+    }
+    
+    .sidebarImg{
+        width: 100px;
+        height: 150px;
+        border-radius: 12px;
+    }
+    
+    .sidebarItem{
+        flex: auto;
+        width: 33vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .sidebarTitle{
+        margin: 25px 10px;
+        padding: 0px;
+        width: 60%;
+        top: 10px;
+        align-self: center;
+        border-top: 0px solid #a7a4a4;
+        border-bottom: 1px solid #a7a4a4;
+        text-align: center;
+        
+        font-family: 'Kalam', cursive;
+        font-size: 12px;
+        color: black;
+        position: absolute;
+    }
+    
+    
+    .sidebarTitle::first-letter{
+        font-size: 16px;
+    }
+    .sidebarItem > img{
+        margin-top: 15px;
+    }
+    
+    .sidebarItem >  p{
+        padding: 4px;
+        font-size: 11px;
+        /* line-height: 60px; */
+        line-height: 16px;
+    }
+    .sidebarItem > p::first-letter{
+        font-size: 16px;
+    }
+    .sidebarList{
+        list-style:none;
+        list-style-position: outside;
+        margin: 0px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 0px;
+        background-color: white;
+        justify-content: flex-start;
+    }
+    .sidebarListItem{
+        /* display: inline-block; */
+        /* width: 50%; */
+        font-size: 10px;
+        margin-top: 15px;
+        cursor: pointer;
+        margin-left: 0px;
+    }
+    
+    .sidebarListItem::first-letter{
+        font-size: 15px;
+    }
+    
+    .sidebarListItem:hover{
+        /* font-size: 16px; */
+        color: gray;
+    }
+    
+    .sidebarSocial{
+        margin-top: 15px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .sidebarIcon{
+        font-size: 16px;
+        margin-top: 15px;
+        cursor: pointer;
+        color: purple;
+    }
+    
+}

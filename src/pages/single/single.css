@@ -1,0 +1,15 @@
+.single{
+    display: flex;
+}
+
+@media (max-width:768px) {
+    .single{
+        flex-direction: column;
+        margin: 0;
+        width: 100vw;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+}

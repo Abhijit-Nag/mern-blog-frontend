@@ -1,0 +1,18 @@
+.posts{
+    flex: 9;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    margin: 20px;
+}
+
+@media (max-width:768px) {
+    .posts{
+        background-color: #fbfbfb;
+        margin: 0;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        padding: 10px;
+       
+    }
+}
