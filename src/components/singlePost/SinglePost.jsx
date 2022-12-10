@@ -8,7 +8,13 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
 
+// import for SWEETALERT2 NOTIFICATION
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 export default function SinglePost() {
+    const MySwal = withReactContent(Swal);
     const location = useLocation();
     const [post, setPost] = useState([]);
     const { user } = useContext(Context);
@@ -17,25 +23,31 @@ export default function SinglePost() {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [updateMode, setUpdateMode] = useState(false);
+    const [updateSuccess, setUpdateSuccess] = useState(false);
+    const [deleteSuccess, setDeleteSuccess] = useState(false);
     useEffect(() => {
         const getPost = async () => {
             try {
-                const res = await axios.get(`/posts/${path}`);
+                const res = await axios.get(`https://mern-blog-app-api-q9a6.onrender.com/api/posts/${path}`);
                 console.log(res.data);
                 setPost(res.data);
             } catch (err) { console.log(err); }
         }
         getPost();
     }, [path]);
-    const handleUpdate= async()=>{
-        try{
-            await axios.put("/posts/"+path,{
-               
-                    username:user.username, title, desc
-               
+    const handleUpdate = async () => {
+        try {
+            await axios.put("https://mern-blog-app-api-q9a6.onrender.com/api/posts/" + path, {
+
+                username: user.username, title, desc
+
             });
-            window.location.reload();
-        }catch(err){
+            // Here I'm commenting out the below code to use it after the sweetalert code segment otherwise windows will reload first before 
+            // showing the alert 
+
+            // window.location.reload();
+            setUpdateSuccess(true);
+        } catch (err) {
             console.log(err);
         }
     };
@@ -43,8 +55,12 @@ export default function SinglePost() {
     const handleDelete = async () => {
         try {
             // without this "{data}" in below post was not deleting it was coming an error don't know why;
-            await axios.delete("/posts/" + path,  {data:{ username: user.username },});
-            navigate("/");
+            await axios.delete("https://mern-blog-app-api-q9a6.onrender.com/api/posts/" + path, { data: { username: user.username }, });
+            setDeleteSuccess(true);
+            // Here I'm commenting out the below code to use it after the sweetalert code segment otherwise windows will navigate first before 
+            // showing the alert 
+
+            // navigate("/");
             // window.location.replace("/");
         } catch (err) { console.log(err); }
     }
@@ -60,7 +76,7 @@ export default function SinglePost() {
 
                 {updateMode ? (
                     <input type="text" placeholder={post.title} value={title} className='singlePostTitle'
-                    onChange={(e)=>setTitle(e.target.value)} />
+                        onChange={(e) => setTitle(e.target.value)} />
                 ) : (
                     <h1 className="singlePostTitle">
 
@@ -85,19 +101,48 @@ export default function SinglePost() {
                     <span className="singlePostDate">{new Date(post.createdAt).toDateString()} </span>
                 </div>
                 {updateMode ? (
-                    <textarea className='updateDesc' 
-                    value={desc}
-                    onChange={e=> setDesc(e.target.value)}></textarea>
-                    ):(
-                        
-                        <p className='singlePostDesc'>
-                    {post.desc}
-                </p>
-                    )}
-                    {updateMode && (
+                    <textarea className='updateDesc'
+                        value={desc}
+                        onChange={e => setDesc(e.target.value)}></textarea>
+                ) : (
 
-                        <button className="singlePostButton" onClick={handleUpdate}>Update</button>
-                    )}
+                    <p className='singlePostDesc'>
+                        {post.desc}
+                    </p>
+                )}
+                {updateMode && (
+
+                    <button className="singlePostButton" onClick={handleUpdate}>Update</button>
+                )}
+
+                {updateSuccess && (<>
+                    {
+                        MySwal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Successfully Post Updated!',
+                            showConfirmButton: false,
+                            timer: 3000,
+                        })
+                    }
+                </>)
+                // && window.location.reload()
+                && window.location.replace("/")
+                
+                }
+
+                {deleteSuccess && (<>
+                {
+                    MySwal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Successfully Post Deleted!',
+                        showConfirmButton: false,
+                        timer: 3000,
+                    })
+                    
+                }
+                </>) && navigate("/")}
             </div>
         </div>
     )
